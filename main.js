@@ -1,21 +1,35 @@
 const add = (a, b) => {
 	
-	const lengthA = a.length;
-	const lengthB = b.length;
+	const lengthA = a.length + 1;
+	const lengthB = b.length + 1;
+	let arrayA = [];
+	let arrayB = [];
 	
-	if(lengthA > lengthB) {
-		b = b.padStart(lengthA, '0')
-	} else {
-		a = a.padStart(lengthB, '0')
+	const padZeroStart = (string, length, symbol) => {
+		const stringLength = string.length;
+		const diffLength = length - stringLength;
+		let result = [...string];
+		for(let i = 0; i < diffLength; i++) {
+			result.unshift(symbol);
+		}
+		return result;
 	}
-	// lengthA > lengthB ? b.padStart(lengthA, '0') : a.padStart(lengthB, '0')
-	const reverseA = a.split('').reverse();
-	const reverseB = b.split('').reverse();
+
+	if(lengthA > lengthB) {
+		arrayB = padZeroStart(b, lengthA, '0');
+		arrayA = padZeroStart(a, lengthA, '0');
+	} else {
+		arrayA = padZeroStart(a, lengthB, '0');
+		arrayB = padZeroStart(b, lengthB, '0');
+	}
+	
+	/*const arrayA = A.split('');
+	const arrayB = B.split('');*/
 
 	let result = [];
 	let acc = 0;
-	for(let i = 0; i < reverseA.length; i++) {
-		let resultTemp = parseInt(reverseA[i]) + parseInt(reverseB[i]) + acc;
+	for(let i = arrayA.length; 0 <= i; i--) {
+		let resultTemp = parseInt(arrayA[i]) + parseInt(arrayB[i]) + acc;
 		if(resultTemp >= 10) {
 			result.push(resultTemp - 10);
 			acc = 1;
@@ -25,5 +39,5 @@ const add = (a, b) => {
 		}
 	}
 
-	return result = result.reverse().join('');
+	return result = result.join('');
 }

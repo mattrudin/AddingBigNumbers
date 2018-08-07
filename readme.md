@@ -34,3 +34,20 @@ The numbers are positives
 [Long Numbers - Adding](https://trans4mind.com/personal_development/JavaScript/longnumAdd.htm)  
 [Large Number Addition in Javascript](https://hard-coded.com/2017/large-number-addition/)  
 [Double tilde](https://medium.com/@nguyenminhphuc/what-is-double-tilde-in-javascript-908537354fb8)  
+
+### padStart()
+[Mozilla .padStart()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)  
+[String padding: .padStart() and .padEnd()](https://codeburst.io/learn-javascript-es-2017-string-padding-padstart-padend-88e90783e7de)  
+[How does String.padStart actually work?](https://medium.com/front-end-hacking/how-does-string-padstart-actually-work-abba34d982e)  
+Codewars does not accept .padStart, so I had to write a simple approach by myself:  
+```javascript
+const padZeroStart = (string, length, symbol) => {
+		const stringLength = string.length;
+		const diffLength = length - stringLength;
+		let result = [...string];
+		for(let i = 0; i < diffLength; i++) {
+			result.unshift(symbol);
+		}
+		return result;
+	}
+```
