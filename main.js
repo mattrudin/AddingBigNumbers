@@ -5,12 +5,12 @@ const add = (a, b) => {
 	let arrayA = [];
 	let arrayB = [];
 	
-	const padZeroStart = (string, length, symbol) => {
+	const padZeroStart = (string, length) => {
 		const stringLength = string.length;
 		const diffLength = length - stringLength;
 		let result = [...string];
 		for(let i = 0; i < diffLength; i++) {
-			result.unshift(symbol);
+			result.unshift('0');
 		}
 		return result;
 	}
@@ -23,21 +23,23 @@ const add = (a, b) => {
 		arrayB = padZeroStart(b, lengthB, '0');
 	}
 	
-	/*const arrayA = A.split('');
-	const arrayB = B.split('');*/
-
 	let result = [];
 	let acc = 0;
-	for(let i = arrayA.length; 0 <= i; i--) {
+	for(let i = arrayA.length - 1; 0 <= i; i--) {
 		let resultTemp = parseInt(arrayA[i]) + parseInt(arrayB[i]) + acc;
 		if(resultTemp >= 10) {
-			result.push(resultTemp - 10);
+			result.unshift(resultTemp - 10);
 			acc = 1;
 		} else {
-			result.push(resultTemp);
+			result.unshift(resultTemp);
 			acc = 0;
 		}
 	}
 
-	return result = result.join('');
+	if(result[0] == '0') {
+		result.shift();
+		return result.join('');
+	} else {
+		return result.join('');
+	}
 }
