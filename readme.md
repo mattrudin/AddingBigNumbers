@@ -10,6 +10,8 @@ Tags: *String*, *Integers*
 
 [2. Lessons learned](#2-lessons-learned)
 
+[3. Clever Codewars solution](#3-clever-codewars-solution)
+
 ## 1. Instructions
 
 ```
@@ -50,4 +52,19 @@ const padZeroStart = (string, length, symbol) => {
 		}
 		return result;
 	}
+```  
+
+## 3. Clever Codewars solution
+```javascript
+function add (a, b) {
+  var res = '', c = 0
+  a = a.split('')
+  b = b.split('')
+  while (a.length || b.length || c) {
+    c += ~~a.pop() + ~~b.pop()
+    res = c % 10 + res
+    c = c > 9
+  }
+  return res
+}
 ```
