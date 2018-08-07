@@ -4,6 +4,8 @@ const add = (a, b) => {
 	const lengthB = b.length + 1;
 	let arrayA = [];
 	let arrayB = [];
+	let result = [];
+	let acc = 0;
 	
 	const padZeroStart = (string, length) => {
 		const stringLength = string.length;
@@ -16,15 +18,13 @@ const add = (a, b) => {
 	}
 
 	if(lengthA > lengthB) {
-		arrayB = padZeroStart(b, lengthA, '0');
-		arrayA = padZeroStart(a, lengthA, '0');
+		arrayB = padZeroStart(b, lengthA);
+		arrayA = padZeroStart(a, lengthA);
 	} else {
-		arrayA = padZeroStart(a, lengthB, '0');
-		arrayB = padZeroStart(b, lengthB, '0');
+		arrayA = padZeroStart(a, lengthB);
+		arrayB = padZeroStart(b, lengthB);
 	}
-	
-	let result = [];
-	let acc = 0;
+
 	for(let i = arrayA.length - 1; 0 <= i; i--) {
 		let resultTemp = parseInt(arrayA[i]) + parseInt(arrayB[i]) + acc;
 		if(resultTemp >= 10) {
